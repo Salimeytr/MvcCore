@@ -36,6 +36,42 @@ namespace MvcCore.Controllers
              return RedirectToAction("List"); 
 
         }
+        [HttpGet]
+        public IActionResult Update(int Id)
+        {
+            //Categories cat = new Categories();
+            //return View(cat);
+            return View(_db.Set<Categories>().Find(Id));
+
+        }
+        [HttpPost]
+        public IActionResult Update (Categories model)
+        {
+            _db.Set<Categories>().Update(model);
+            _db.SaveChanges();
+            return RedirectToAction("List");
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int Id)
+        {
+            //Categories cat = new Categories();
+            //return View(cat);
+            return View(_db.Set<Categories>().Find(Id));
+
+        }
+        [HttpPost]
+        public IActionResult Delete(Categories model)
+        {
+            _db.Set<Categories>().Remove(model);
+            _db.SaveChanges();
+            return RedirectToAction("List");
+
+        } 
+
+
+
 
 
     }
